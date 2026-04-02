@@ -1,13 +1,11 @@
-// utils/logout.ts
 import { expect, Page } from '@playwright/test';
 
 export async function logout(page: Page) {
-  await page.getByRole('button', { name: /dayin/i }).click();
+  const profileToggle = page.locator('a.dropdown-toggle.nav-link.dropdown-user-link');
+  const logoutLink = page.locator('a.dropdown-item[href*="/public/logout"]');
 
-  const logoutItem = page.getByRole('link', { name: /logout/i })
-    .or(page.getByRole('button', { name: /logout/i }))
-    .or(page.getByText(/logout/i));
-
-  await expect(logoutItem).toBeVisible();
-  await logoutItem.click();
+  await profileToggle.click();
+  await expect(logoutLink).toBeVisible();
+  await logoutLink.click();
 }
+
