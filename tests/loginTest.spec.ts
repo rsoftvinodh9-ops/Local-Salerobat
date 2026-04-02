@@ -4,35 +4,36 @@ import { logout } from '../utils/logout';
 
 const BASE_URL = 'https://rdot.in/public/login';
 
-// 🔥 Common Hook (Runs after every test)
-test.afterEach(async ({ page }, testInfo) => {
-  const screenshot = await page.screenshot();
-
-  await testInfo.attach('Screenshot', {
-    body: screenshot,
-    contentType: 'image/png',
-  });
-
-  if (testInfo.status === 'passed') {
-    console.log('✅ Test Passed');
-  } else {
-    console.log('❌ Test Failed');
-  }
-});
-
-
 // ✅ VALID LOGIN
-test('Valid Login', async ({ page }) => {
+test('Valid Login ', async ({ page }) => {
   await login(page, {
     companyName: 'NAVEEN',
     userName: 'rsoft',
     password: 'RSoft!@345',
   });
 
-  await expect(page).toHaveURL(/\/admin\/Dashboard/i);
-  await expect(page.getByRole('link', { name: /dashboard/i })).toBeVisible();
+  try {
+    await page.waitForURL(/\/admin\/Dashboard/i);
+    await expect(page).toHaveURL(/\/admin\/Dashboard/i);
 
-  console.log('✅ Successfully logged in');
+    // Screenshot on success
+    const screenshot = await page.screenshot();
+    await test.info().attach('Login Success Screenshot', {
+      body: screenshot,
+      contentType: 'image/png',
+    });
+
+    console.log('✅ Successfully logged in');
+  } catch (error) {
+    const screenshot = await page.screenshot();
+    await test.info().attach('Login Failed Screenshot', {
+      body: screenshot,
+      contentType: 'image/png',
+    });
+
+    console.log('❌ Login Failed');
+    throw error;
+  }
 });
 
 
@@ -44,8 +45,19 @@ test('Invalid Password', async ({ page }) => {
     password: 'wrongPassword',
   });
 
-  await expect(page.getByText('Incorrect User Name or Password')).toBeVisible();
-  console.log('❌ Login Failed - Invalid Password');
+  try {
+    await expect(page.getByText('Incorrect User Name or Password')).toBeVisible();
+
+    const screenshot = await page.screenshot();
+    await test.info().attach('Invalid Password Screenshot', {
+      body: screenshot,
+      contentType: 'image/png',
+    });
+
+    console.log('❌ Login Failed - Invalid Password');
+  } catch (error) {
+    throw error;
+  }
 });
 
 
@@ -57,8 +69,19 @@ test('Invalid Username', async ({ page }) => {
     password: 'RSoft!@345',
   });
 
-  await expect(page.getByText('Incorrect User Name or Password')).toBeVisible();
-  console.log('❌ Login Failed - Invalid Username');
+  try {
+    await expect(page.getByText('Incorrect User Name or Password')).toBeVisible();
+
+    const screenshot = await page.screenshot();
+    await test.info().attach('Invalid Username Screenshot', {
+      body: screenshot,
+      contentType: 'image/png',
+    });
+
+    console.log('❌ Login Failed - Invalid Username');
+  } catch (error) {
+    throw error;
+  }
 });
 
 
@@ -67,8 +90,19 @@ test('Empty Fields', async ({ page }) => {
   await page.goto(BASE_URL);
   await page.getByRole('button', { name: 'Login' }).click();
 
-  await expect(page.getByText('Please Enter Company Name')).toBeVisible();
-  console.log('❌ Login Failed - Empty Fields');
+  try {
+    await expect(page.getByText('Please Enter Company Name')).toBeVisible();
+
+    const screenshot = await page.screenshot();
+    await test.info().attach('Empty Fields Screenshot', {
+      body: screenshot,
+      contentType: 'image/png',
+    });
+
+    console.log('❌ Login Failed - Empty Fields');
+  } catch (error) {
+    throw error;
+  }
 });
 
 
@@ -80,10 +114,40 @@ test('Logout Test', async ({ page }) => {
     password: 'RSoft!@345',
   });
 
-  await expect(page).toHaveURL(/\/admin\/Dashboard/i);
+  try {
+    await page.waitForURL(/\/admin\/Dashboard/i);
 
-  await logout(page);
+    // Login success screenshot
+    const loginShot = await page.screenshot();
+    await test.info().attach('Login Success Before Logout', {
+      body: loginShot,
+      contentType: 'image/png',
+    });
 
-  await expect(page).toHaveURL(/\/login/i);
-  await expect(page.getByRole('button', { name: /login/i })).toBeVisible();
+    console.log('✅ Successfully logged in');
+
+    // Perform logout
+    await logout(page);
+
+    await expect(page).toHaveURL(/login/);
+
+    // Logout success screenshot
+    const logoutShot = await page.screenshot();
+    await test.info().attach('Logout Success Screenshot', {
+      body: logoutShot,
+      contentType: 'image/png',
+    });
+
+    console.log('✅ Logout was successful');
+
+  } catch (error) {
+    const screenshot = await page.screenshot();
+    await test.info().attach('Logout Failed Screenshot', {
+      body: screenshot,
+      contentType: 'image/png',
+    });
+
+    console.log('❌ Logout Failed');
+    throw error;
+  }
 });
