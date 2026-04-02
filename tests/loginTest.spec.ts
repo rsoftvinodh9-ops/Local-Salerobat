@@ -81,14 +81,9 @@ test('Logout Test', async ({ page }) => {
   });
 
   await expect(page).toHaveURL(/\/admin\/Dashboard/i);
-  console.log('✅ Successfully logged in');
 
-  await Promise.all([
-    page.waitForURL(/login/),
-    logout(page),
-  ]);
+  await logout(page);
 
-  await expect(page).toHaveURL(/login/);
-
-  console.log('✅ Logout was successful');
+  await expect(page).toHaveURL(/\/login/i);
+  await expect(page.getByRole('button', { name: /login/i })).toBeVisible();
 });
