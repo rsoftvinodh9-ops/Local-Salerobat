@@ -83,7 +83,11 @@ test('Logout Test', async ({ page }) => {
   await expect(page).toHaveURL(/\/admin\/Dashboard/i);
   console.log('✅ Successfully logged in');
 
-  await logout(page);
+  await Promise.all([
+    page.waitForURL(/login/),
+    logout(page),
+  ]);
+
   await expect(page).toHaveURL(/login/);
 
   console.log('✅ Logout was successful');
