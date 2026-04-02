@@ -26,7 +26,12 @@ export async function logout(page: Page) {
 }
 //Call Button
 export async function clickCall(page: Page) {
-  await page.getByRole('button', { name: 'Call' }).click();
+  const headerActions = page
+    .locator('ul')
+    .filter({ has: page.getByRole('button', { name: /day/i }) })
+    .first();
+
+  await headerActions.locator('li').nth(1).click();
 }
 // Notification
 export async function clickNotification(page: Page) {

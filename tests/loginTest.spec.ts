@@ -1,3 +1,4 @@
+import '../utils/Screenshot';
 import { test, expect } from '@playwright/test';
 import { login } from '../utils/login';
 import { logout } from '../utils/logout';
@@ -16,12 +17,12 @@ test('Valid Login ', async ({ page }) => {
     await page.waitForURL(/\/admin\/Dashboard/i);
     await expect(page).toHaveURL(/\/admin\/Dashboard/i);
 
-    // Screenshot on success
-    const screenshot = await page.screenshot();
-    await test.info().attach('Login Success Screenshot', {
-      body: screenshot,
-      contentType: 'image/png',
-    });
+    // // Screenshot on success
+    // const screenshot = await page.screenshot();
+    // await test.info().attach('Login Success Screenshot', {
+    //   body: screenshot,
+    //   contentType: 'image/png',
+    //});
 
     console.log('✅ Successfully logged in');
   } catch (error) {
@@ -48,11 +49,11 @@ test('Invalid Password', async ({ page }) => {
   try {
     await expect(page.getByText('Incorrect User Name or Password')).toBeVisible();
 
-    const screenshot = await page.screenshot();
-    await test.info().attach('Invalid Password Screenshot', {
-      body: screenshot,
-      contentType: 'image/png',
-    });
+    // const screenshot = await page.screenshot();
+    // await test.info().attach('Invalid Password Screenshot', {
+    //   body: screenshot,
+    //   contentType: 'image/png',
+    // });
 
     console.log('❌ Login Failed - Invalid Password');
   } catch (error) {
@@ -72,11 +73,11 @@ test('Invalid Username', async ({ page }) => {
   try {
     await expect(page.getByText('Incorrect User Name or Password')).toBeVisible();
 
-    const screenshot = await page.screenshot();
-    await test.info().attach('Invalid Username Screenshot', {
-      body: screenshot,
-      contentType: 'image/png',
-    });
+    // const screenshot = await page.screenshot();
+    // await test.info().attach('Invalid Username Screenshot', {
+    //   body: screenshot,
+    //   contentType: 'image/png',
+    // });
 
     console.log('❌ Login Failed - Invalid Username');
   } catch (error) {
@@ -93,11 +94,11 @@ test('Empty Fields', async ({ page }) => {
   try {
     await expect(page.getByText('Please Enter Company Name')).toBeVisible();
 
-    const screenshot = await page.screenshot();
-    await test.info().attach('Empty Fields Screenshot', {
-      body: screenshot,
-      contentType: 'image/png',
-    });
+    // const screenshot = await page.screenshot();
+    // await test.info().attach('Empty Fields Screenshot', {
+    //   body: screenshot,
+    //   contentType: 'image/png',
+    // });
 
     console.log('❌ Login Failed - Empty Fields');
   } catch (error) {
@@ -132,20 +133,20 @@ test('Logout Test', async ({ page }) => {
     await expect(page).toHaveURL(/login/);
 
     // Logout success screenshot
-    const logoutShot = await page.screenshot();
-    await test.info().attach('Logout Success Screenshot', {
-      body: logoutShot,
-      contentType: 'image/png',
-    });
+    // const logoutShot = await page.screenshot();
+    // await test.info().attach('Logout Success Screenshot', {
+    //   body: logoutShot,
+    //   contentType: 'image/png',
+    // });
 
     console.log('✅ Logout was successful');
 
   } catch (error) {
-    const screenshot = await page.screenshot();
-    await test.info().attach('Logout Failed Screenshot', {
-      body: screenshot,
-      contentType: 'image/png',
-    });
+    // const screenshot = await page.screenshot();
+    // await test.info().attach('Logout Failed Screenshot', {
+    //   body: screenshot,
+    //   contentType: 'image/png',
+    // });
 
     console.log('❌ Logout Failed');
     throw error;
