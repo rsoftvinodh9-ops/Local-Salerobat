@@ -4,7 +4,9 @@ import { login, verifyInvalidLogin } from '../utils/login';
 import {openMyProfile} from '../utils/ProfileActions';
 import { goToCRMSettings } from '../utils/Dashboard';
 import {clickProfile} from '../utils/SettingsPage';
-import { clickProfileAction } from '../utils/ProfilePageActions';   
+import { clickProfileAction } from '../utils/ProfilePageActions'; 
+import { setMultiplePermissions } from '../utils/SetModulePermission';
+
 
 test('Profile-userview Test', async ({ page }) => {
   test.setTimeout(90000);
@@ -16,12 +18,17 @@ test('Profile-userview Test', async ({ page }) => {
   await goToCRMSettings(page);
   await clickProfile(page);
   await clickProfileAction(page, 'Test123', 'Modules');
+  await setMultiplePermissions(page, 'Calls', {
+    View: true,
+    Edit: false,
+    Delete: true,
+    Create: false,
+  });
 
 
 
 
 
-  
  // await page.screenshot({ path: 'screenshots/Profile-userview.png', fullPage: true });      
 
 
