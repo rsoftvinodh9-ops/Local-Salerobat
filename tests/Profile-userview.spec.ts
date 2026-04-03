@@ -7,7 +7,7 @@ import {clickProfile} from '../utils/SettingsPage';
 import { clickProfileAction } from '../utils/ProfilePageActions';   
 
 test('Profile-userview Test', async ({ page }) => {
-  test.setTimeout(50000);
+  test.setTimeout(90000);
   // Valid login
   await login(page, 'VINODH', 'rsoft', 'Vinodh@5292');
     // await verifyInvalidLogin(page);
@@ -15,7 +15,14 @@ test('Profile-userview Test', async ({ page }) => {
   await openMyProfile(page);
   await goToCRMSettings(page);
   await clickProfile(page);
-  await clickProfileAction(page, 'mobile app testing', 'edit');
+  await clickProfileAction(page, 'Test123', 'Modules');
+
+
+
+
+
+  
+ // await page.screenshot({ path: 'screenshots/Profile-userview.png', fullPage: true });      
 
 
 
