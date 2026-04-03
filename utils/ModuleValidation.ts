@@ -8,7 +8,7 @@ export async function verifyModule(page: Page, moduleName: string) {
 
     console.log(`✅ ${moduleName} module is open successfully`);
 
-  } catch (error) {
+  } catch (error)  {
     console.log(`❌ Failed to open the ${moduleName} module`);
   }
 }
