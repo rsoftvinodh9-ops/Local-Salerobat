@@ -1,19 +1,28 @@
 import '../utils/Screenshot';
-import { test } from '@playwright/test';
-import { login } from '../utils/login';
-import { clickCall, clickDay, clickLogo, clickMenu, clickNo, clickSettings, clickYes, openMyProfile } from '../utils/Dashboard';
-import {Menulist} from '../utils/Menulist';
-import {verifyModule}from '../utils/ModuleValidation';
-import { RphoneProvider } from '../utils/R-phoneaction';
-
-
+import { expect, test } from '@playwright/test';
+import { login, verifyInvalidLogin } from '../utils/login';
+import { openMyProfile , } from '../utils/ProfileActions';
+import { goToCRMSettings } from '../utils/Dashboard';
+import {clickProfile} from '../utils/SettingsPage';
+import { clickProfileAction } from '../utils/ProfilePageActions';   
 
 test('Profile-userview Test', async ({ page }) => {
-    await login(page, {
-        companyName: 'NAVEEN',
-        userName: 'rsoft',
-        password: 'RSoft!@345',
-    });
+  test.setTimeout(50000);
+  // Valid login
+  await login(page, 'VINODH', 'rsoft', 'Vinodh@5292');
+    // await verifyInvalidLogin(page);
 
-    await openMyProfile(page);
+  await openMyProfile(page);
+  await goToCRMSettings(page);
+  await clickProfile(page);
+  await clickProfileAction(page, 'mobile app testing', 'edit');
+
+
+
+
+
+  //await expect(page.getByRole('heading', { name: /User Management/i })).toBeVisible();
+
+
+
 });

@@ -1,0 +1,415 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: Profile-userview.spec.ts >> Profile-userview Test
+- Location: tests\Profile-userview.spec.ts:9:5
+
+# Error details
+
+```
+Test timeout of 50000ms exceeded.
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e5]:
+      - list [ref=e6]:
+        - listitem [ref=e7]:
+          - generic [ref=e9]: list
+          - list:
+            - listitem:
+              - heading "anchor Marketing" [level=6]:
+                - generic: anchor
+                - generic: Marketing
+              - list:
+                - listitem:
+                  - link "Whatshot Campaigns":
+                    - /url: https://rdot.in/public/admin/?Module=Campaigns&view=AdvancedListView&viewname=
+                    - generic: Whatshot
+                    - generic: Campaigns
+                - listitem:
+                  - link "Mark_Unread_Chat_alt SMS Notifiers":
+                    - /url: https://rdot.in/public/admin/?Module=Sms_notifiers&view=AdvancedListView&viewname=
+                    - generic: Mark_Unread_Chat_alt
+                    - generic: SMS Notifiers
+                - listitem:
+                  - link "Mail Emails":
+                    - /url: https://rdot.in/public/admin/?Module=Emails&view=Email
+                    - generic: Mail
+                    - generic: Emails
+                - listitem:
+                  - link "Rate_Review Chats":
+                    - /url: https://rdot.in/public/admin/?Module=Chats&view=Chat&chats_to=
+                    - generic: Rate_Review
+                    - generic: Chats
+            - listitem:
+              - heading "shopping_cart_checkout Sales" [level=6]:
+                - generic: shopping_cart_checkout
+                - generic: Sales
+              - list:
+                - listitem:
+                  - link "Call Calls":
+                    - /url: https://rdot.in/public/admin/?Module=Calls&view=AdvancedListView&viewname=
+                    - generic: Call
+                    - generic: Calls
+                - listitem:
+                  - link "Contact_Mail Leads":
+                    - /url: https://rdot.in/public/admin/?Module=Leads&view=AdvancedListView&viewname=
+                    - generic: Contact_Mail
+                    - generic: Leads
+                - listitem:
+                  - link "handshake Appointments":
+                    - /url: https://rdot.in/public/admin/?Module=Appointments&view=AdvancedListView&viewname=
+                    - generic: handshake
+                    - generic: Appointments
+            - listitem:
+              - heading "account_balance Accounts" [level=6]:
+                - generic: account_balance
+                - generic: Accounts
+              - list:
+                - listitem:
+                  - link "card_membership Invoices":
+                    - /url: https://rdot.in/public/admin/?Module=Invoices&view=AdvancedListView&viewname=
+                    - generic: card_membership
+                    - generic: Invoices
+                - listitem:
+                  - link "Currency_Rupee Payments":
+                    - /url: https://rdot.in/public/admin/?Module=Payments&view=AdvancedListView&viewname=
+                    - generic: Currency_Rupee
+                    - generic: Payments
+            - listitem:
+              - heading "support_agent Support" [level=6]:
+                - generic: support_agent
+                - generic: Support
+              - list:
+                - listitem:
+                  - link "Local_Activity Tickets":
+                    - /url: https://rdot.in/public/admin/?Module=Tickets&view=AdvancedListView&viewname=
+                    - generic: Local_Activity
+                    - generic: Tickets
+            - listitem:
+              - heading "card_membership Inventory" [level=6]:
+                - generic: card_membership
+                - generic: Inventory
+              - list:
+                - listitem:
+                  - link "inventory_2 Products":
+                    - /url: https://rdot.in/public/admin/?Module=Products&view=AdvancedListView&viewname=
+                    - generic: inventory_2
+                    - generic: Products
+                - listitem:
+                  - link "Shopping_Bag Sales Orders":
+                    - /url: https://rdot.in/public/admin/?Module=Sales_orders&view=AdvancedListView&viewname=
+                    - generic: Shopping_Bag
+                    - generic: Sales Orders
+            - listitem:
+              - heading "monitoring Analytics" [level=6]:
+                - generic: monitoring
+                - generic: Analytics
+              - list:
+                - listitem:
+                  - link "Update Updates":
+                    - /url: https://rdot.in/public/admin/?Module=Updates&view=List&viewname=
+                    - generic: Update
+                    - generic: Updates
+                - listitem:
+                  - link "bar_chart Reports":
+                    - /url: https://rdot.in/public/admin/?Module=Reports&view=AdvancedListView&viewname=
+                    - generic: bar_chart
+                    - generic: Reports
+            - listitem:
+              - heading "tools_wrench Tools" [level=6]:
+                - generic: tools_wrench
+                - generic: Tools
+              - list:
+                - listitem:
+                  - link "Picture_as_Pdf PDF Makers":
+                    - /url: https://rdot.in/public/admin/?Module=Pdf_makers&view=AdvancedListView&viewname=
+                    - generic: Picture_as_Pdf
+                    - generic: PDF Makers
+                - listitem:
+                  - link "Drafts Email Templates":
+                    - /url: https://rdot.in/public/admin/?Module=Email_Templates&view=AdvancedListView&viewname=
+                    - generic: Drafts
+                    - generic: Email Templates
+                - listitem:
+                  - link "SMS SMS Templates":
+                    - /url: https://rdot.in/public/admin/?Module=SMS_Templates&view=AdvancedListView&viewname=
+                    - generic: SMS
+                    - generic: SMS Templates
+                - listitem:
+                  - link "Folder Documents":
+                    - /url: https://rdot.in/public/admin/?Module=Documents&view=AdvancedListView&viewname=
+                    - generic: Folder
+                    - generic: Documents
+                - listitem:
+                  - link "Mark_Email_Unread Mail Managers":
+                    - /url: https://rdot.in/public/admin/?Module=Mailmanagers&view=AdvancedListView&viewname=
+                    - generic: Mark_Email_Unread
+                    - generic: Mail Managers
+                - listitem:
+                  - link "Recycling Recycling":
+                    - /url: https://rdot.in/public/admin/?Module=RecycleBin&view=List&viewname=
+                    - generic: Recycling
+                    - generic: Recycling
+            - listitem:
+              - heading "rocket_launch IVR" [level=6]:
+                - generic: rocket_launch
+                - generic: IVR
+              - list:
+                - listitem:
+                  - link "Cell_Tower IVR Providers":
+                    - /url: https://rdot.in/public/admin/?Module=Ivr_providers&view=List&viewname=
+                    - generic: Cell_Tower
+                    - generic: IVR Providers
+            - listitem:
+              - heading "arrows_more_up Others" [level=6]:
+                - generic: arrows_more_up
+                - generic: Others
+              - list:
+                - listitem:
+                  - link "bar_chart Test Inventory":
+                    - /url: https://rdot.in/public/admin/?Module=Test_inventory&view=AdvancedListView&viewname=
+                    - generic: bar_chart
+                    - generic: Test Inventory
+                - listitem:
+                  - link "Whatshot Test":
+                    - /url: https://rdot.in/public/admin/?Module=Test&view=AdvancedListView&viewname=
+                    - generic: Whatshot
+                    - generic: Test
+                - listitem:
+                  - link "Receipt_Long New Inventory Module":
+                    - /url: https://rdot.in/public/admin/?Module=New_inve&view=AdvancedListView&viewname=
+                    - generic: Receipt_Long
+                    - generic: New Inventory Module
+                - listitem:
+                  - link "Call New Test Module":
+                    - /url: https://rdot.in/public/admin/?Module=New_test_module&view=AdvancedListView&viewname=
+                    - generic: Call
+                    - generic: New Test Module
+                - listitem:
+                  - link "Folder New":
+                    - /url: https://rdot.in/public/admin/?Module=New&view=AdvancedListView&viewname=
+                    - generic: Folder
+                    - generic: New
+                - listitem:
+                  - link "handshake Server Testing":
+                    - /url: https://rdot.in/public/admin/?Module=Server_testing&view=AdvancedListView&viewname=
+                    - generic: handshake
+                    - generic: Server Testing
+                - listitem:
+                  - link "Whatshot Testing Module":
+                    - /url: https://rdot.in/public/admin/?Module=Testing_module&view=AdvancedListView&viewname=
+                    - generic: Whatshot
+                    - generic: Testing Module
+                - listitem:
+                  - link "Call Latest module":
+                    - /url: https://rdot.in/public/admin/?Module=Latest_module&view=AdvancedListView&viewname=
+                    - generic: Call
+                    - generic: Latest module
+                - listitem:
+                  - link "Notifications Inventory":
+                    - /url: https://rdot.in/public/admin/?Module=Inventory&view=AdvancedListView&viewname=
+                    - generic: Notifications
+                    - generic: Inventory
+                - listitem:
+                  - link "Currency_Rupee ABC Inventory Module":
+                    - /url: https://rdot.in/public/admin/?Module=Abc__inventory_module&view=AdvancedListView&viewname=
+                    - generic: Currency_Rupee
+                    - generic: ABC Inventory Module
+                - listitem:
+                  - link "Receipt_Long Total Inventory":
+                    - /url: https://rdot.in/public/admin/?Module=Tatal_inventory&view=AdvancedListView&viewname=
+                    - generic: Receipt_Long
+                    - generic: Total Inventory
+                - listitem:
+                  - link "Notifications ModuleLimited":
+                    - /url: https://rdot.in/public/admin/?Module=Module_limit&view=AdvancedListView&viewname=
+                    - generic: Notifications
+                    - generic: ModuleLimited
+                - listitem:
+                  - link "tools_wrench Duplicate Prevention":
+                    - /url: https://rdot.in/public/admin/?Module=Duplicate_prevention&view=AdvancedListView&viewname=
+                    - generic: tools_wrench
+                    - generic: Duplicate Prevention
+                - listitem:
+                  - link "bar_chart Advanced Report":
+                    - /url: https://rdot.in/public/admin/?Module=Advanced_report&view=AdvancedReport&tabmode=All Reports
+                    - generic: bar_chart
+                    - generic: Advanced Report
+                - listitem:
+                  - link "handshake New Module":
+                    - /url: https://rdot.in/public/admin/?Module=New_module&view=AdvancedListView&viewname=
+                    - generic: handshake
+                    - generic: New Module
+                - listitem:
+                  - link "Schedule Server Checking":
+                    - /url: https://rdot.in/public/admin/?Module=Server_checking&view=AdvancedListView&viewname=
+                    - generic: Schedule
+                    - generic: Server Checking
+                - listitem:
+                  - link "Call Test Module":
+                    - /url: https://rdot.in/public/admin/?Module=Test_module&view=AdvancedListView&viewname=
+                    - generic: Call
+                    - generic: Test Module
+                - listitem:
+                  - link "star Duplicate":
+                    - /url: https://rdot.in/public/admin/?Module=Lead_merge_duplicate&view=AdvancedListView&viewname=
+                    - generic: star
+                    - generic: Duplicate
+                - listitem:
+                  - link "Whatshot Vinodh Testing":
+                    - /url: https://rdot.in/public/admin/?Module=Vinodh_testinf&view=AdvancedListView&viewname=
+                    - generic: Whatshot
+                    - generic: Vinodh Testing
+                - listitem:
+                  - link "Contact_Mail Whatsapp Template":
+                    - /url: https://rdot.in/public/admin/?Module=Whatsapp_template&view=AdvancedListView&viewname=
+                    - generic: Contact_Mail
+                    - generic: Whatsapp Template
+                - listitem:
+                  - link "Contact_Mail Leads Testing":
+                    - /url: https://rdot.in/public/admin/?Module=Leads_testing&view=AdvancedListView&viewname=
+                    - generic: Contact_Mail
+                    - generic: Leads Testing
+                - listitem:
+                  - link "Schedule Attendances":
+                    - /url: https://rdot.in/public/admin/?Module=Attendances&view=AdvancedListView&viewname=
+                    - generic: Schedule
+                    - generic: Attendances
+                - listitem:
+                  - link "Location_On Track Locations":
+                    - /url: https://rdot.in/public/admin/?Module=Tracklocations&view=AdvancedListView&viewname=
+                    - generic: Location_On
+                    - generic: Track Locations
+                - listitem:
+                  - link "Notifications Notifications":
+                    - /url: https://rdot.in/public/admin/?Module=Notifications&view=AdvancedListView&viewname=
+                    - generic: Notifications
+                    - generic: Notifications
+        - listitem [ref=e10]:
+          - generic [ref=e12]: 
+        - listitem [ref=e13]:
+          - button "search" [ref=e14] [cursor=pointer]:
+            - generic [ref=e15]: search
+        - listitem [ref=e16]:
+          - img [ref=e18]
+      - list [ref=e19]:
+        - listitem [ref=e20]:
+          - button "Dayin" [ref=e22] [cursor=pointer]
+        - listitem [ref=e23]:
+          - generic "Call" [ref=e24]:
+            - generic [ref=e25]: call
+        - listitem [ref=e27]:
+          - link "" [ref=e28] [cursor=pointer]:
+            - /url: https://rdot.in/public/admin?Module=Mailmanagers&view=List
+            - generic [ref=e29]: 
+        - listitem [ref=e30]:
+          - generic "Notification" [ref=e31]:
+            - generic [ref=e32]: 
+            - generic [ref=e33]: "24"
+        - listitem [ref=e34]:
+          - generic "Settings" [ref=e35]:
+            - generic [ref=e36]: settings
+  - generic [ref=e37]:
+    - generic [ref=e38]:
+      - img [ref=e41]
+      - generic [ref=e43]:
+        - generic [ref=e44]:
+          - img [ref=e46]
+          - generic [ref=e47]: rsoft
+        - link " My Profile" [ref=e49] [cursor=pointer]:
+          - /url: https://rdot.in/public/admin/Settings?Module=User&parent=Setting&view=Detail&fieldid=1&record=1&moduleid=1
+          - generic [ref=e50]: 
+          - text: My Profile
+        - generic [ref=e51]:
+          - generic [ref=e52]: line_style
+          - text: Dashboard Filter
+        - link " CRM Setting" [ref=e53] [cursor=pointer]:
+          - /url: https://rdot.in/public/admin/SettingDashboard?Module=CrmSettings&parent=Setting&view=index
+          - generic [ref=e54]: 
+          - text: CRM Setting
+        - link " Manage Users" [ref=e55] [cursor=pointer]:
+          - /url: https://rdot.in/public/admin/Settings?Module=User&parent=Setting&view=index&fieldid=1
+          - generic [ref=e56]: 
+          - text: Manage Users
+        - link "Logout" [ref=e57] [cursor=pointer]:
+          - /url: https://rdot.in/public/logout
+          - generic [ref=e58]: 
+          - text: Logout
+        - button "Dayout/Logout" [ref=e60] [cursor=pointer]:
+          - generic [ref=e61]: 
+          - text: Dayout/Logout
+    - list [ref=e66]:
+      - listitem [ref=e67]:
+        - link "home" [ref=e68] [cursor=pointer]:
+          - /url: https://rdot.in/public/admin/Dashboard
+          - generic [ref=e69]: home
+      - listitem [ref=e70]:
+        - link "Currency_Rupee" [ref=e71] [cursor=pointer]:
+          - /url: https://rdot.in/public/admin/?Module=Payments&view=AdvancedListView&viewname=
+          - generic [ref=e72]: Currency_Rupee
+  - generic [ref=e75]:
+    - generic [ref=e76]:
+      - list [ref=e78]:
+        - listitem [ref=e79]:
+          - generic [ref=e80]:
+            - generic [ref=e81]: Notifications
+            - generic [ref=e82]: Inventory
+        - listitem [ref=e83]:
+          - generic [ref=e84]:
+            - generic [ref=e85]: Receipt_Long
+            - generic [ref=e86]: New Inventory M...
+        - listitem [ref=e87]:
+          - generic [ref=e88]:
+            - generic [ref=e89]: Receipt_Long
+            - generic [ref=e90]: Total Inventory
+      - generic [ref=e92]:
+        - text: 
+        - list [ref=e94]:
+          - listitem [ref=e95]:
+            - generic [ref=e97]: 
+          - listitem [ref=e98]:
+            - generic [ref=e100]: 
+    - generic [ref=e102]:
+      - list [ref=e103]:
+        - listitem [ref=e104]:
+          - link "dashboard Dashboard" [expanded] [ref=e105] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e106]:
+              - generic [ref=e107]: dashboard
+              - generic [ref=e108]: Dashboard
+        - listitem [ref=e109]:
+          - link "widgets" [ref=e110] [cursor=pointer]:
+            - /url: "#idgetsTap"
+            - generic [ref=e111]: widgets
+        - listitem [ref=e112]:
+          - link "" [ref=e113] [cursor=pointer]:
+            - /url: "#"
+            - generic [ref=e114]: 
+      - generic [ref=e116]:
+        - generic [ref=e117]: filter_alt_off
+        - generic [ref=e118]: No Filtrate
+      - text:  
+    - tabpanel "dashboard Dashboard" [ref=e120]:
+      - generic [ref=e121]:
+        - generic [ref=e128]:
+          - generic:
+            - generic "Hide": 
+          - generic [ref=e131]:
+            - generic [ref=e132]:
+              - generic "All Inventory" [ref=e134]
+              - generic "4" [ref=e136]
+            - generic [ref=e139]: Notifications
+        - generic [ref=e140]:
+          - generic [ref=e143]: palette
+          - generic [ref=e146] [cursor=pointer]: grid_view
+```
