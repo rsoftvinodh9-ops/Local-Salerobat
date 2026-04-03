@@ -1,7 +1,7 @@
 import '../utils/Screenshot';
 import { expect, test } from '@playwright/test';
 import { login, verifyInvalidLogin } from '../utils/login';
-import { openMyProfile , } from '../utils/ProfileActions';
+import {openMyProfile} from '../utils/ProfileActions';
 import { goToCRMSettings } from '../utils/Dashboard';
 import {clickProfile} from '../utils/SettingsPage';
 import { clickProfileAction } from '../utils/ProfilePageActions';   
