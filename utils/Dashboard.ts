@@ -16,8 +16,10 @@ export async function clickNo(page: Page) {
 }
 
 // Click Logo
-export async function clickLogo(page: Page) {
-  await page.locator("img[src*='rsoftlogo2']").click();
+export async function openMyProfile(page: Page) {
+  await page
+    .getByRole('listitem').filter({ hasText: 'rsoft My Profile line_style' }).getByRole('link')
+    .click();
 }
 
 // Logout
