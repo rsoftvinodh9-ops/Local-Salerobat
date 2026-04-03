@@ -176,16 +176,6 @@ Test timeout of 50000ms exceeded.
                 - generic: Others
               - list:
                 - listitem:
-                  - link "bar_chart Test Inventory":
-                    - /url: https://rdot.in/public/admin/?Module=Test_inventory&view=AdvancedListView&viewname=
-                    - generic: bar_chart
-                    - generic: Test Inventory
-                - listitem:
-                  - link "Whatshot Test":
-                    - /url: https://rdot.in/public/admin/?Module=Test&view=AdvancedListView&viewname=
-                    - generic: Whatshot
-                    - generic: Test
-                - listitem:
                   - link "Receipt_Long New Inventory Module":
                     - /url: https://rdot.in/public/admin/?Module=New_inve&view=AdvancedListView&viewname=
                     - generic: Receipt_Long
@@ -201,10 +191,15 @@ Test timeout of 50000ms exceeded.
                     - generic: Folder
                     - generic: New
                 - listitem:
-                  - link "handshake Server Testing":
-                    - /url: https://rdot.in/public/admin/?Module=Server_testing&view=AdvancedListView&viewname=
-                    - generic: handshake
-                    - generic: Server Testing
+                  - link "bar_chart Test Inventory":
+                    - /url: https://rdot.in/public/admin/?Module=Test_inventory&view=AdvancedListView&viewname=
+                    - generic: bar_chart
+                    - generic: Test Inventory
+                - listitem:
+                  - link "Whatshot Test":
+                    - /url: https://rdot.in/public/admin/?Module=Test&view=AdvancedListView&viewname=
+                    - generic: Whatshot
+                    - generic: Test
                 - listitem:
                   - link "Whatshot Testing Module":
                     - /url: https://rdot.in/public/admin/?Module=Testing_module&view=AdvancedListView&viewname=
@@ -221,10 +216,10 @@ Test timeout of 50000ms exceeded.
                     - generic: Notifications
                     - generic: Inventory
                 - listitem:
-                  - link "Currency_Rupee ABC Inventory Module":
-                    - /url: https://rdot.in/public/admin/?Module=Abc__inventory_module&view=AdvancedListView&viewname=
-                    - generic: Currency_Rupee
-                    - generic: ABC Inventory Module
+                  - link "handshake Server Testing":
+                    - /url: https://rdot.in/public/admin/?Module=Server_testing&view=AdvancedListView&viewname=
+                    - generic: handshake
+                    - generic: Server Testing
                 - listitem:
                   - link "Receipt_Long Total Inventory":
                     - /url: https://rdot.in/public/admin/?Module=Tatal_inventory&view=AdvancedListView&viewname=
@@ -241,15 +236,10 @@ Test timeout of 50000ms exceeded.
                     - generic: tools_wrench
                     - generic: Duplicate Prevention
                 - listitem:
-                  - link "bar_chart Advanced Report":
-                    - /url: https://rdot.in/public/admin/?Module=Advanced_report&view=AdvancedReport&tabmode=All Reports
-                    - generic: bar_chart
-                    - generic: Advanced Report
-                - listitem:
-                  - link "handshake New Module":
-                    - /url: https://rdot.in/public/admin/?Module=New_module&view=AdvancedListView&viewname=
-                    - generic: handshake
-                    - generic: New Module
+                  - link "Currency_Rupee ABC Inventory Module":
+                    - /url: https://rdot.in/public/admin/?Module=Abc__inventory_module&view=AdvancedListView&viewname=
+                    - generic: Currency_Rupee
+                    - generic: ABC Inventory Module
                 - listitem:
                   - link "Schedule Server Checking":
                     - /url: https://rdot.in/public/admin/?Module=Server_checking&view=AdvancedListView&viewname=
@@ -265,6 +255,16 @@ Test timeout of 50000ms exceeded.
                     - /url: https://rdot.in/public/admin/?Module=Lead_merge_duplicate&view=AdvancedListView&viewname=
                     - generic: star
                     - generic: Duplicate
+                - listitem:
+                  - link "bar_chart Advanced Report":
+                    - /url: https://rdot.in/public/admin/?Module=Advanced_report&view=AdvancedReport&tabmode=All Reports
+                    - generic: bar_chart
+                    - generic: Advanced Report
+                - listitem:
+                  - link "handshake New Module":
+                    - /url: https://rdot.in/public/admin/?Module=New_module&view=AdvancedListView&viewname=
+                    - generic: handshake
+                    - generic: New Module
                 - listitem:
                   - link "Whatshot Vinodh Testing":
                     - /url: https://rdot.in/public/admin/?Module=Vinodh_testinf&view=AdvancedListView&viewname=
@@ -322,94 +322,131 @@ Test timeout of 50000ms exceeded.
   - generic [ref=e37]:
     - generic [ref=e38]:
       - img [ref=e41]
-      - generic [ref=e43]:
-        - generic [ref=e44]:
-          - img [ref=e46]
-          - generic [ref=e47]: rsoft
-        - link " My Profile" [ref=e49] [cursor=pointer]:
-          - /url: https://rdot.in/public/admin/Settings?Module=User&parent=Setting&view=Detail&fieldid=1&record=1&moduleid=1
-          - generic [ref=e50]: 
-          - text: My Profile
-        - generic [ref=e51]:
-          - generic [ref=e52]: line_style
-          - text: Dashboard Filter
-        - link " CRM Setting" [ref=e53] [cursor=pointer]:
-          - /url: https://rdot.in/public/admin/SettingDashboard?Module=CrmSettings&parent=Setting&view=index
-          - generic [ref=e54]: 
-          - text: CRM Setting
-        - link " Manage Users" [ref=e55] [cursor=pointer]:
-          - /url: https://rdot.in/public/admin/Settings?Module=User&parent=Setting&view=index&fieldid=1
-          - generic [ref=e56]: 
-          - text: Manage Users
-        - link "Logout" [ref=e57] [cursor=pointer]:
-          - /url: https://rdot.in/public/logout
-          - generic [ref=e58]: 
-          - text: Logout
-        - button "Dayout/Logout" [ref=e60] [cursor=pointer]:
-          - generic [ref=e61]: 
-          - text: Dayout/Logout
-    - list [ref=e66]:
-      - listitem [ref=e67]:
-        - link "home" [ref=e68] [cursor=pointer]:
+      - text:     
+    - list [ref=e46]:
+      - listitem [ref=e47]:
+        - link "home" [ref=e48] [cursor=pointer]:
           - /url: https://rdot.in/public/admin/Dashboard
-          - generic [ref=e69]: home
-      - listitem [ref=e70]:
-        - link "Currency_Rupee" [ref=e71] [cursor=pointer]:
+          - generic [ref=e49]: home
+      - listitem [ref=e50]:
+        - link "Currency_Rupee" [ref=e51] [cursor=pointer]:
           - /url: https://rdot.in/public/admin/?Module=Payments&view=AdvancedListView&viewname=
-          - generic [ref=e72]: Currency_Rupee
-  - generic [ref=e75]:
-    - generic [ref=e76]:
-      - list [ref=e78]:
-        - listitem [ref=e79]:
-          - generic [ref=e80]:
-            - generic [ref=e81]: Notifications
-            - generic [ref=e82]: Inventory
-        - listitem [ref=e83]:
-          - generic [ref=e84]:
-            - generic [ref=e85]: Receipt_Long
-            - generic [ref=e86]: New Inventory M...
-        - listitem [ref=e87]:
-          - generic [ref=e88]:
-            - generic [ref=e89]: Receipt_Long
-            - generic [ref=e90]: Total Inventory
-      - generic [ref=e92]:
-        - text: 
-        - list [ref=e94]:
-          - listitem [ref=e95]:
-            - generic [ref=e97]: 
-          - listitem [ref=e98]:
-            - generic [ref=e100]: 
-    - generic [ref=e102]:
-      - list [ref=e103]:
-        - listitem [ref=e104]:
-          - link "dashboard Dashboard" [expanded] [ref=e105] [cursor=pointer]:
-            - /url: "#"
-            - generic [ref=e106]:
-              - generic [ref=e107]: dashboard
-              - generic [ref=e108]: Dashboard
-        - listitem [ref=e109]:
-          - link "widgets" [ref=e110] [cursor=pointer]:
-            - /url: "#idgetsTap"
-            - generic [ref=e111]: widgets
-        - listitem [ref=e112]:
-          - link "" [ref=e113] [cursor=pointer]:
-            - /url: "#"
-            - generic [ref=e114]: 
+          - generic [ref=e52]: Currency_Rupee
+  - generic [ref=e54]:
+    - generic [ref=e58]:
+      - heading "Settings" [level=5] [ref=e59]
+      - generic [ref=e62]:
+        - generic [ref=e63]:
+          - button " User & Access Control" [ref=e64] [cursor=pointer]:
+            - generic [ref=e66]: 
+            - generic [ref=e67]: User & Access Control
+          - text:     
+        - generic [ref=e68]:
+          - button " Studio" [ref=e69] [cursor=pointer]:
+            - generic [ref=e71]: 
+            - generic [ref=e72]: Studio
+          - text:   
+        - generic [ref=e73]:
+          - button " Templates" [ref=e74] [cursor=pointer]:
+            - generic [ref=e76]: 
+            - generic [ref=e77]: Templates
+          - text: 
+        - generic [ref=e78]:
+          - button " Other Settings" [ref=e79] [cursor=pointer]:
+            - generic [ref=e81]: 
+            - generic [ref=e82]: Other Settings
+          - text:               
+        - generic [ref=e83]:
+          - button " Integration" [ref=e84] [cursor=pointer]:
+            - generic [ref=e86]: 
+            - generic [ref=e87]: Integration
+          - text:      
+        - generic [ref=e88]:
+          - button " Log" [ref=e89] [cursor=pointer]:
+            - generic [ref=e91]: 
+            - generic [ref=e92]: Log
+          - text:    
+    - generic [ref=e95]:
+      - generic [ref=e96]:
+        - heading "Summary" [level=3] [ref=e97]
+        - list [ref=e99]:
+          - listitem [ref=e100]:
+            - generic [ref=e102]: 
+          - listitem [ref=e103]:
+            - generic [ref=e105]: 
+          - listitem [ref=e106]:
+            - generic [ref=e108]: 
+          - listitem [ref=e109]:
+            - generic [ref=e111]: 
+      - separator [ref=e112]
       - generic [ref=e116]:
-        - generic [ref=e117]: filter_alt_off
-        - generic [ref=e118]: No Filtrate
-      - text:  
-    - tabpanel "dashboard Dashboard" [ref=e120]:
-      - generic [ref=e121]:
-        - generic [ref=e128]:
-          - generic:
-            - generic "Hide": 
-          - generic [ref=e131]:
-            - generic [ref=e132]:
-              - generic "All Inventory" [ref=e134]
-              - generic "4" [ref=e136]
-            - generic [ref=e139]: Notifications
-        - generic [ref=e140]:
-          - generic [ref=e143]: palette
-          - generic [ref=e146] [cursor=pointer]: grid_view
+        - generic [ref=e117]:
+          - generic [ref=e119]:
+            - generic [ref=e120]:
+              - heading "Users" [level=4] [ref=e121]
+              - text: 
+              - list [ref=e123]:
+                - listitem [ref=e124]:
+                  - link "All User " [ref=e125] [cursor=pointer]:
+                    - /url: https://rdot.in/public/admin/Settings/?Module=User&parent=Setting&view=index&fieldid=1
+                    - text: All User
+                    - generic [ref=e126]: 
+            - generic [ref=e129]:
+              - heading "" [level=3] [ref=e132]:
+                - generic [ref=e133]: 
+              - heading "13" [level=3] [ref=e135]
+          - generic [ref=e137]:
+            - generic [ref=e138]:
+              - heading "Workflow" [level=4] [ref=e139]
+              - text: 
+              - list [ref=e141]:
+                - listitem [ref=e142]:
+                  - link "All Workflow " [ref=e143] [cursor=pointer]:
+                    - /url: https://rdot.in/public/admin/Settings/?Module=Workflow&parent=Setting&view=index&fieldid=8
+                    - text: All Workflow
+                    - generic [ref=e144]: 
+            - generic [ref=e147]:
+              - heading "" [level=3] [ref=e150]:
+                - generic [ref=e151]: 
+              - heading "1" [level=3] [ref=e153]
+          - generic [ref=e155]:
+            - generic [ref=e156]:
+              - heading "Modules" [level=4] [ref=e157]
+              - text: 
+              - list [ref=e159]:
+                - listitem [ref=e160]:
+                  - link "All Modules " [ref=e161] [cursor=pointer]:
+                    - /url: https://rdot.in/public/admin/Settings/?Module=LayoutEditor&parent=Setting&view=index&fieldid=3
+                    - text: All Modules
+                    - generic [ref=e162]: 
+            - generic [ref=e165]:
+              - heading "" [level=3] [ref=e168]:
+                - generic [ref=e169]: 
+              - heading "51" [level=3] [ref=e171]
+        - heading "Settings Shortcuts" [level=3] [ref=e172]
+        - separator [ref=e173]
+        - table [ref=e175]:
+          - rowgroup [ref=e176]:
+            - row " Login History  Picklist Editor  Edit Field" [ref=e177]:
+              - cell " Login History" [ref=e178]:
+                - link " Login History" [ref=e181] [cursor=pointer]:
+                  - /url: Settings?Module=Login History&parent=Setting&view=index&fieldid=14
+                  - generic [ref=e183]: 
+                  - heading "Login History" [level=5] [ref=e186]
+              - cell " Picklist Editor" [ref=e189]:
+                - link " Picklist Editor" [ref=e192] [cursor=pointer]:
+                  - /url: Settings?Module=Picklist Editor&parent=Setting&view=index&fieldid=4
+                  - generic [ref=e194]: 
+                  - heading "Picklist Editor" [level=5] [ref=e197]
+              - cell " Edit Field" [ref=e200]:
+                - link " Edit Field" [ref=e203] [cursor=pointer]:
+                  - /url: Settings?Module=Edit Field&parent=Setting&view=index&fieldid=3
+                  - generic [ref=e205]: 
+                  - heading "Edit Field" [level=5] [ref=e208]
+            - row " Outgoing Server" [ref=e211]:
+              - cell " Outgoing Server" [ref=e212]:
+                - link " Outgoing Server" [ref=e215] [cursor=pointer]:
+                  - /url: Settings?Module=Outgoing Server&parent=Setting&view=index&fieldid=15
+                  - generic [ref=e217]: 
+                  - heading "Outgoing Server" [level=5] [ref=e220]
 ```
