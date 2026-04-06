@@ -22,6 +22,15 @@ export class Logger {
     }
   }
 
+  static async screenshot(page: Page, name: string) {
+    try {
+      await page.screenshot({ path: `screenshots/${name}.png`, fullPage: true });
+      Logger.step(`Screenshot captured: ${name}`);
+    } catch (e) {
+      Logger.error(`Unable to capture screenshot ${name}: ${e.message}`);
+    }
+  }
+
   static async retryAction(action: () => Promise<void>, maxRetries: number = 3, delay: number = 1000) {
     for (let i = 0; i < maxRetries; i++) {
       try {

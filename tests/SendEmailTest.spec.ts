@@ -48,17 +48,19 @@ test.describe('Send Email Test', () => {
       await emailModalPage.selectAdditionalField('Modified By ID');
 
       // Select template
-      await emailModalPage.selectTemplate('Test Template');
+      await emailModalPage.selectTemplate('sample template');
 
-      // Edit content
-      const emailContent = 'Hi,\n\n                                              Welcome to Rsoft team\n\nOne\tTwo\tThree\tFour\tFive\netfgjh\tvbmvbmnb fgj\thgjhjdj \tgjdgjdj\tdjdhjghkhhjhggkhk\ndghjhgkj\tfhkjkjlk\tfgjhkjljhljg yjhkjgh\tghfkjghkjh\t\n\nhkfhk ttii\n\nukjh\n\n\n\n\t\n\t\n\t\n\t\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                 Thanks,\n\n                   aaaaaa. Test';
-      await emailModalPage.editEmailContent(emailContent);
+      // // Edit content
+      // const emailContent = 'Hi,\n\n                                              Welcome to Rsoft team\n\nOne\tTwo\tThree\tFour\tFive\netfgjh\tvbmvbmnb fgj\thgjhjdj \tgjdgjdj\tdjdhjghkhhjhggkhk\ndghjhgkj\tfhkjkjlk\tfgjhkjljhljg yjhkjgh\tghfkjghkjh\t\n\nhkfhk ttii\n\nukjh\n\n\n\n\t\n\t\n\t\n\t\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                 Thanks,\n\n                   aaaaaa. Test';
+      // await emailModalPage.editEmailContent(emailContent);
 
       // Send email
       await emailModalPage.sendEmail();
+      await Logger.screenshot(page, 'after-send-email');
 
       // Close modal
       await emailModalPage.closeModal();
+      await Logger.screenshot(page, 'after-close-email-modal');
 
       // Navigate to Mail Emails
       await dashboardPage.openVerticalMenu();
@@ -66,8 +68,10 @@ test.describe('Send Email Test', () => {
 
       // View sent emails
       await emailsPage.clickViewAll();
-      await emailsPage.openEmailBySubject('Test Template');
+      await emailsPage.openEmailBySubject('sample template');
+      await Logger.screenshot(page, 'after-open-email');
       await emailsPage.clickMailBoxSection();
+      await Logger.screenshot(page, 'after-mailbox-section');
 
       Logger.success('Send email test completed');
     } catch (error) {
