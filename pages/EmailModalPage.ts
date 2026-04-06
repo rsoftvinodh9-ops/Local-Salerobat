@@ -20,8 +20,10 @@ export class EmailModalPage {
   async openEmailFieldsDropdown() {
     Logger.step('Opening email fields dropdown');
     await Logger.retryAction(async () => {
-      await this.page.getByRole('list').filter({ hasText: /^$/ }).first().waitFor({ state: 'visible', timeout: 10000 });
-      await this.page.getByRole('list').filter({ hasText: /^$/ }).first().click();
+      const dropdownTrigger = this.page.getByRole('list').filter({ hasText: /^$/ }).first();
+      await dropdownTrigger.waitFor({ state: 'visible', timeout: 10000 });
+      await dropdownTrigger.click();
+      await this.page.locator('[role="treeitem"], [role="option"], [role="listitem"], .select2-results__option').first().waitFor({ state: 'visible', timeout: 10000 }).catch(() => {});
     });
     Logger.success('Email fields dropdown opened');
   }
@@ -29,9 +31,27 @@ export class EmailModalPage {
   async selectEmailField(fieldName: string) {
     Logger.step(`Selecting email field: ${fieldName}`);
     await Logger.retryAction(async () => {
-      await this.page.getByRole('treeitem', { name: fieldName }).waitFor({ state: 'visible', timeout: 10000 });
-      await this.page.getByRole('treeitem', { name: fieldName }).click();
-    });
+      const fieldOption = this.page.locator('[role="treeitem"]', { hasText: fieldName }).first();
+      const fallbackOption = this.page.locator(`text=${fieldName}`).first();
+
+      await this.page.waitForTimeout(500);
+
+      if ((await fieldOption.count()) > 0) {
+        await fieldOption.scrollIntoViewIfNeeded();
+        await fieldOption.waitFor({ state: 'visible', timeout: 15000 });
+        await fieldOption.click();
+        return;
+      }
+
+      if ((await fallbackOption.count()) > 0) {
+        await fallbackOption.scrollIntoViewIfNeeded();
+        await fallbackOption.waitFor({ state: 'visible', timeout: 15000 });
+        await fallbackOption.click();
+        return;
+      }
+
+      throw new Error(`Field option not found: ${fieldName}`);
+    }, 5, 2000);
     Logger.success(`Selected ${fieldName}`);
   }
 

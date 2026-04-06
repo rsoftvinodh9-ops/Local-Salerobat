@@ -1,3 +1,4 @@
+import '../utils/Screenshot';
 import { test, expect } from '@playwright/test';
 import { login } from '../utils/login';
 import { DashboardPage } from '../pages/DashboardPage';
