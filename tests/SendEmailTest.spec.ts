@@ -1,78 +1,79 @@
-import '../utils/Screenshot';
-import { test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { login } from '../utils/login';
-import { clickMenu } from '../utils/Dashboard';
-import { Menulist } from '../utils/Menulist';
-import { selectDropdown } from '../utils/SendEmailDropdowns';
+import { DashboardPage } from '../pages/DashboardPage';
+import { LeadsPage } from '../pages/LeadsPage';
+import { EmailModalPage } from '../pages/EmailModalPage';
+import { EmailsPage } from '../pages/EmailsPage';
+import { Logger } from '../utils/Logger';
 
-test('Send Email Test', async ({ page }) => {
-  test.setTimeout(90000);
-  await login(page, 'NAVEEN', 'rsoft', 'RSoft!@345');
-  await clickMenu(page);
-  await Menulist(page, 'Leads');
-  const selectEmailField = async (dialogLabel: string, value: string) => {
-    await selectDropdown(page, {
-      container: emailDialog,
-      dropdownLocator: emailDialog.locator(
-        `xpath=.//*[normalize-space()="${dialogLabel}"]/following::*[@role="combobox"][1]`
-      ),
-      values: [value],
-    });
-  };
+test.describe('Send Email Test', () => {
+  test.setTimeout(120000);
 
-  try{
-    const row = page.locator('#row-794085');
+  test('Send email to lead and verify', async ({ page }) => {
+    const dashboardPage = new DashboardPage(page);
+    const leadsPage = new LeadsPage(page);
+    const emailModalPage = new EmailModalPage(page);
+    const emailsPage = new EmailsPage(page);
 
-  await row.locator('span.qa_icon:has-text("quickreply")').click();
-  } catch (error) {
-    console.error('Error occurred while clicking quickreply:', error);
-  }
+    try {
+      Logger.step('Starting send email test');
 
-  await page.getByText('mail', { exact: true }).click();
-  const emailDialog = page.locator('#quick-action-modal');
-  await emailDialog.getByText('Send Email', { exact: true }).waitFor({ state: 'visible' });
+      // Login using utility
+      await login(page, {
+        companyName: 'NAVEEN',
+        userName: 'rsoft',
+        password: 'RSoft!@345',
+      });
+      Logger.success('Logged in');
 
-  await selectDropdown(page, {
-    container: emailDialog,
-    dropdownLocator: emailDialog.locator(
-      'xpath=.//*[normalize-space()="Outgoing Email Address"]/following::*[@role="textbox"][1]'
-    ),
-    values: ['rsoftvinodh9@gmail.com'],
+      // Navigate to Contact Mail Leads
+      await dashboardPage.openVerticalMenu();
+      await dashboardPage.navigateToModule('Contact_Mail Leads');
+
+      // Click quick reply on specific lead
+      await leadsPage.clickQuickReplyOnLead('646531');
+
+      // Handle email modal
+      await emailModalPage.selectEmailType();
+      await emailModalPage.openEmailFieldsDropdown();
+      await emailModalPage.selectEmailField('Secondary Email ( rsoft Assigned To )');
+      await emailModalPage.openEmailFieldsDropdown();
+      await emailModalPage.selectEmailField('Secondary Email ( rsoft Created By )');
+      await emailModalPage.openEmailFieldsDropdown();
+      await emailModalPage.selectEmailField('Secondary Email ( rsoft Created By )');
+      await emailModalPage.openEmailFieldsDropdown();
+      await emailModalPage.selectEmailField('Secondary Email ( rsoft Created By )');
+
+      // Select additional field
+      await emailModalPage.selectAdditionalField('Modified By ID');
+
+      // Select template
+      await emailModalPage.selectTemplate('Test Template');
+
+      // Edit content
+      const emailContent = 'Hi,\n\n                                              Welcome to Rsoft team\n\nOne\tTwo\tThree\tFour\tFive\netfgjh\tvbmvbmnb fgj\thgjhjdj \tgjdgjdj\tdjdhjghkhhjhggkhk\ndghjhgkj\tfhkjkjlk\tfgjhkjljhljg yjhkjgh\tghfkjghkjh\t\n\nhkfhk ttii\n\nukjh\n\n\n\n\t\n\t\n\t\n\t\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                 Thanks,\n\n                   aaaaaa. Test';
+      await emailModalPage.editEmailContent(emailContent);
+
+      // Send email
+      await emailModalPage.sendEmail();
+
+      // Close modal
+      await emailModalPage.closeModal();
+
+      // Navigate to Mail Emails
+      await dashboardPage.openVerticalMenu();
+      await dashboardPage.navigateToModule('Mail Emails');
+
+      // View sent emails
+      await emailsPage.clickViewAll();
+      await emailsPage.openEmailBySubject('Test Template');
+      await emailsPage.clickMailBoxSection();
+
+      Logger.success('Send email test completed');
+    } catch (error) {
+      Logger.error(`Test failed: ${error}`);
+      await Logger.screenshotOnFailure(page, 'send-email-test');
+      throw error;
+    }
   });
-
-  await selectEmailField('From Email', 'Primary Email ( Pradeep');
-  await selectEmailField('To Email', 'Email (Leads)');
-  await selectEmailField('Add Cc', 'Email (Leads)');
-  await selectDropdown(page, {
-    container: emailDialog,
-    dropdownLocator: emailDialog.locator(
-      'xpath=.//*[normalize-space()="Choose Template"]/following::*[@role="combobox"][1]'
-    ),
-    values: ['Suresh'],
-  });
-  await selectDropdown(page, {
-    container: emailDialog,
-    dropdownLocator: emailDialog.locator(
-      'xpath=.//*[normalize-space()="Add Fields"]/following::*[@role="combobox"][1]'
-    ),
-    values: ['Area'],
-    exact: true,
-  });
-  await page
-    .locator('iframe[title="Editor, qaBlockArea"]')
-    .contentFrame()
-    .locator('body')
-    .fill('sadh;asfsafkasfcs');
-  const sendButton = emailDialog.getByRole('button', { name: 'send' });
-  await sendButton.scrollIntoViewIfNeeded();
-  await sendButton.click({ force: true });
-  await page.waitForTimeout(3000);
-
-     
-
-  
 });
-
-
-   
-
