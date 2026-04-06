@@ -5,6 +5,7 @@ type DropdownOptions = {
   dropdownName?: string;        // label or placeholder
   dropdownLocator?: Locator;    // direct locator (if known)
   values: string[];             // values to select
+  exact?: boolean;              // exact option match or not
   multi?: boolean;              // multi-select or not
 };
 
@@ -17,12 +18,12 @@ export async function selectDropdown(
     dropdownName,
     dropdownLocator,
     values,
+    exact = false,
     multi = false,
   } = options;
 
   const scope = container ?? page;
 
-  // 🔹 Step 1: Open dropdown
   if (dropdownLocator) {
     await dropdownLocator.click();
   } else if (dropdownName) {
@@ -31,17 +32,12 @@ export async function selectDropdown(
     throw new Error('Provide dropdownName or dropdownLocator');
   }
 
-  // 🔹 Step 2: Select values
   for (const value of values) {
-    const option = page.getByRole('treeitem', { name: value });
+    const option = page.getByRole('treeitem', { name: value, exact });
 
     await option.waitFor({ state: 'visible' });
     await option.click();
 
-    if (!multi) break; // stop if single select
+    if (!multi) break;
   }
 }
-                                                                    //   use : await selectDropdown(page, {
-                                                                    //     dropdownName: 'Select an Option',
-                                                                    //   values: ['rsoftvinodh9@gmail.com'],
-                                                                    //  });
