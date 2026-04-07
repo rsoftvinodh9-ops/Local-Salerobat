@@ -16,7 +16,7 @@ test('All Ui Test', async ({ page }) => {
   //await AddModule(page);
   await ClickModulePermission(page,'Leads','Quick Create');
   await ClickModulePermission(page,'Leads','Mobile View');
-  // await ClickModulePermission(page,'Leads','Auto Dialer');
+   await ClickModulePermission(page,'Leads','Auto Dialer');
 
 
   

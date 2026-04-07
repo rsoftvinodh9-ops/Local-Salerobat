@@ -14,28 +14,36 @@ export async function ClickModulePermission(Page:Page,ModuleName:string,Action:A
   await row.waitFor({ state: 'visible' });
   await row.scrollIntoViewIfNeeded();
 
-  let actionCell;
-    switch (Action) {
+  let iconText: string;
+  switch (Action) {
         case 'Quick Create':
-            actionCell = row.locator('td').last().locator('i').filter({ hasText: 'bolt' });
-            await actionCell.waitFor({ state: 'visible' });
-            await actionCell.click();
+            iconText = 'bolt';
             break;
-
         case 'Mobile View':
-            actionCell = row.locator('td').last().locator('i').filter({ hasText: 'phone_iphone' });
-            await actionCell.waitFor({ state: 'visible' });
-            await actionCell.click();
+            iconText = 'phone_iphone';
             break;
         case 'Auto Dialer':
-            actionCell = row.locator('td').last().locator('i').filter({ hasText: 'call' });
-            await actionCell.waitFor({ state: 'visible' });
-            await actionCell.click();
+            iconText = 'call';
             break;  
         default:
             throw new Error(`Unknown action: ${Action}`);
     }
 
+  // Try multiple selector strategies
+  const lastTd = row.locator('td').last();
+  let actionCell = lastTd.locator(`[class*="${iconText}"], [data-icon*="${iconText}"]`);
+  
+  // If not found, try looking for any element with the text
+  if (await actionCell.count() === 0) {
+    actionCell = lastTd.locator('//*[contains(text(), "' + iconText + '")]');
+  }
+  
+  // If still not found, try within span or i tags
+  if (await actionCell.count() === 0) {
+    actionCell = lastTd.locator(`i, span, svg`).filter({ hasText: iconText }).first();
+  }
 
-
+  await actionCell.waitFor({ state: 'visible', timeout: 5000 });
+  await actionCell.click();
+}
 }

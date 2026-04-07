@@ -183,71 +183,6 @@ Call log:
                 - generic: Others
               - list:
                 - listitem:
-                  - link "Schedule Server Checking":
-                    - /url: https://rdot.in/public/admin/?Module=Server_checking&view=AdvancedListView&viewname=
-                    - generic: Schedule
-                    - generic: Server Checking
-                - listitem:
-                  - link "Call Test Module":
-                    - /url: https://rdot.in/public/admin/?Module=Test_module&view=AdvancedListView&viewname=
-                    - generic: Call
-                    - generic: Test Module
-                - listitem:
-                  - link "star Duplicate":
-                    - /url: https://rdot.in/public/admin/?Module=Lead_merge_duplicate&view=AdvancedListView&viewname=
-                    - generic: star
-                    - generic: Duplicate
-                - listitem:
-                  - link "bar_chart Test Inventory":
-                    - /url: https://rdot.in/public/admin/?Module=Test_inventory&view=AdvancedListView&viewname=
-                    - generic: bar_chart
-                    - generic: Test Inventory
-                - listitem:
-                  - link "Whatshot Test":
-                    - /url: https://rdot.in/public/admin/?Module=Test&view=AdvancedListView&viewname=
-                    - generic: Whatshot
-                    - generic: Test
-                - listitem:
-                  - link "Receipt_Long New Inventory Module":
-                    - /url: https://rdot.in/public/admin/?Module=New_inve&view=AdvancedListView&viewname=
-                    - generic: Receipt_Long
-                    - generic: New Inventory Module
-                - listitem:
-                  - link "Call New Test Module":
-                    - /url: https://rdot.in/public/admin/?Module=New_test_module&view=AdvancedListView&viewname=
-                    - generic: Call
-                    - generic: New Test Module
-                - listitem:
-                  - link "Folder New":
-                    - /url: https://rdot.in/public/admin/?Module=New&view=AdvancedListView&viewname=
-                    - generic: Folder
-                    - generic: New
-                - listitem:
-                  - link "handshake Server Testing":
-                    - /url: https://rdot.in/public/admin/?Module=Server_testing&view=AdvancedListView&viewname=
-                    - generic: handshake
-                    - generic: Server Testing
-                - listitem:
-                  - link "Whatshot Testing Module":
-                    - /url: https://rdot.in/public/admin/?Module=Testing_module&view=AdvancedListView&viewname=
-                    - generic: Whatshot
-                    - generic: Testing Module
-                - listitem:
-                  - link "Call Latest module":
-                    - /url: https://rdot.in/public/admin/?Module=Latest_module&view=AdvancedListView&viewname=
-                    - generic: Call
-                    - generic: Latest module
-                - listitem:
-                  - link "Notifications Inventory":
-                    - /url: https://rdot.in/public/admin/?Module=Inventory&view=AdvancedListView&viewname=
-                    - generic: Notifications
-                    - generic: Inventory
-                - listitem:
-                  - link "Currency_Rupee ABC Inventory Module":
-                    - /url: https://rdot.in/public/admin/?Module=Abc__inventory_module&view=AdvancedListView&viewname=
-                    - generic: Currency_Rupee
-                    - generic: ABC Inventory Module
-                - listitem:
                   - link "Receipt_Long Total Inventory":
                     - /url: https://rdot.in/public/admin/?Module=Tatal_inventory&view=AdvancedListView&viewname=
                     - generic: Receipt_Long
@@ -263,6 +198,26 @@ Call log:
                     - generic: tools_wrench
                     - generic: Duplicate Prevention
                 - listitem:
+                  - link "Currency_Rupee ABC Inventory Module":
+                    - /url: https://rdot.in/public/admin/?Module=Abc__inventory_module&view=AdvancedListView&viewname=
+                    - generic: Currency_Rupee
+                    - generic: ABC Inventory Module
+                - listitem:
+                  - link "Schedule Server Checking":
+                    - /url: https://rdot.in/public/admin/?Module=Server_checking&view=AdvancedListView&viewname=
+                    - generic: Schedule
+                    - generic: Server Checking
+                - listitem:
+                  - link "Call Test Module":
+                    - /url: https://rdot.in/public/admin/?Module=Test_module&view=AdvancedListView&viewname=
+                    - generic: Call
+                    - generic: Test Module
+                - listitem:
+                  - link "star Duplicate":
+                    - /url: https://rdot.in/public/admin/?Module=Lead_merge_duplicate&view=AdvancedListView&viewname=
+                    - generic: star
+                    - generic: Duplicate
+                - listitem:
                   - link "bar_chart Advanced Report":
                     - /url: https://rdot.in/public/admin/?Module=Advanced_report&view=AdvancedReport&tabmode=All Reports
                     - generic: bar_chart
@@ -272,6 +227,51 @@ Call log:
                     - /url: https://rdot.in/public/admin/?Module=New_module&view=AdvancedListView&viewname=
                     - generic: handshake
                     - generic: New Module
+                - listitem:
+                  - link "Folder New":
+                    - /url: https://rdot.in/public/admin/?Module=New&view=AdvancedListView&viewname=
+                    - generic: Folder
+                    - generic: New
+                - listitem:
+                  - link "Receipt_Long New Inventory Module":
+                    - /url: https://rdot.in/public/admin/?Module=New_inve&view=AdvancedListView&viewname=
+                    - generic: Receipt_Long
+                    - generic: New Inventory Module
+                - listitem:
+                  - link "Call New Test Module":
+                    - /url: https://rdot.in/public/admin/?Module=New_test_module&view=AdvancedListView&viewname=
+                    - generic: Call
+                    - generic: New Test Module
+                - listitem:
+                  - link "bar_chart Test Inventory":
+                    - /url: https://rdot.in/public/admin/?Module=Test_inventory&view=AdvancedListView&viewname=
+                    - generic: bar_chart
+                    - generic: Test Inventory
+                - listitem:
+                  - link "Whatshot Test":
+                    - /url: https://rdot.in/public/admin/?Module=Test&view=AdvancedListView&viewname=
+                    - generic: Whatshot
+                    - generic: Test
+                - listitem:
+                  - link "Notifications Inventory":
+                    - /url: https://rdot.in/public/admin/?Module=Inventory&view=AdvancedListView&viewname=
+                    - generic: Notifications
+                    - generic: Inventory
+                - listitem:
+                  - link "Whatshot Testing Module":
+                    - /url: https://rdot.in/public/admin/?Module=Testing_module&view=AdvancedListView&viewname=
+                    - generic: Whatshot
+                    - generic: Testing Module
+                - listitem:
+                  - link "Call Latest module":
+                    - /url: https://rdot.in/public/admin/?Module=Latest_module&view=AdvancedListView&viewname=
+                    - generic: Call
+                    - generic: Latest module
+                - listitem:
+                  - link "handshake Server Testing":
+                    - /url: https://rdot.in/public/admin/?Module=Server_testing&view=AdvancedListView&viewname=
+                    - generic: handshake
+                    - generic: Server Testing
                 - listitem:
                   - link "Whatshot Vinodh Testing":
                     - /url: https://rdot.in/public/admin/?Module=Vinodh_testinf&view=AdvancedListView&viewname=
