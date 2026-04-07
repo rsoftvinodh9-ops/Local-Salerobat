@@ -29,7 +29,7 @@ test.describe('Send Email Test', () => {
 
       // Navigate to Contact Mail Leads
       await dashboardPage.openVerticalMenu();
-      await dashboardPage.navigateToModule('Contact_Mail Leads');
+      await dashboardPage.navigateToModule('Leads');
 
       // Click quick reply on specific lead
       await leadsPage.clickQuickReplyOnLead('646531');
@@ -45,7 +45,7 @@ test.describe('Send Email Test', () => {
       await emailModalPage.openEmailFieldsDropdown();
       await emailModalPage.selectEmailField('Secondary Email ( rsoft Created By )');
 
-      // Select additional field
+      // Select add field
       await emailModalPage.selectAdditionalField('Modified By ID');
 
       // Select template

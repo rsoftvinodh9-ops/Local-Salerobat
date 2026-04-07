@@ -1,5 +1,5 @@
 import '../utils/Screenshot';
-import { expect, test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { login } from '../utils/login';
 import { openMyProfile } from '../utils/ProfileActions';
 import { goToCRMSettings, clickMenu } from '../utils/Dashboard';
@@ -8,9 +8,10 @@ import { clickProfileAction } from '../utils/ProfilePageActions';
 import { setMultiplePermissions } from '../utils/SetModulePermission';
 import { Menulist } from '../utils/Menulist';
 import { logout } from '../utils/logout';
+import {verifyModulePermissions} from '../utils/RecordPermission';
 
-test('Profile-userview Test', async ({ page }) => {
-  test.setTimeout(90000);
+test('Profile-userview Test', async ({ page }) => { 
+  test.setTimeout(50000);
 
   await login(page, 'VINODH', 'rsoft', 'Vinodh@5292');
   await openMyProfile(page);
@@ -18,11 +19,11 @@ test('Profile-userview Test', async ({ page }) => {
   await clickProfile(page);
   await clickProfileAction(page, 'Implementation', 'Modules');
 
-  await setMultiplePermissions(page, 'Calls', {
+  await setMultiplePermissions(page, 'Leads', {
     View: true,
-    Edit: false,
-    Delete: true,
-    Create: false,
+    // Edit: false,
+    // Delete: true,
+    // Create: false,
   });
   await page.locator('button.profileModulePopupClose').click();
 
@@ -30,8 +31,7 @@ test('Profile-userview Test', async ({ page }) => {
 
   await login(page, 'VINODH', 'Pradeep', 'User@1234');
   await clickMenu(page);
-  await Menulist(page, 'Calls');
+  await Menulist(page, 'Leads');
 
-  await expect(page.getByRole('heading', { name: /Calls - All/i })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Edit' })).toHaveCount(0);
+  await verifyModulePermissions(page, 'Leads');
 });

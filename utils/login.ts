@@ -7,12 +7,7 @@ type LoginData = {
 };
 
 // Login function supporting both object and positional args
-export async function login(
-  page: Page,
-  companyOrData: string | LoginData,
-  username?: string,
-  password?: string
-) {
+export async function login( page: Page,companyOrData: string | LoginData,username?: string, password?: string) {
   const data =
     typeof companyOrData === 'string'
       ? {
