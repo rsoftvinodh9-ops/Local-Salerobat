@@ -46,7 +46,9 @@ export async function clickMenu(page: Page) {
  await page.getByText('list', { exact: true }).click();
 }
 // Open user dropdown
-export async function openUserMenu(page: Page) {
+ export async function openUserMenu(page: Page) {
+  // Wait for overlay to disappear if present
+  await page.locator('#livewireOverly').waitFor({ state: 'hidden', timeout: 5000 }).catch(() => {});
   await page.locator('.dropdown-toggle.nav-link.dropdown-user-link').click();
 }
 
@@ -82,6 +84,8 @@ export async function closePopup(page: Page) {
  export async function logout(page: Page) {
    await openUserMenu(page);
    await page.getByRole('link', { name: /Logout/i }).click();
+
+   
 
    
  }

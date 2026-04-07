@@ -11,3 +11,15 @@ await page.getByText('Role').click();
 export async function loginhistory(page: Page) {
     await page.getByText('Login History').click();
 }
+
+export async function Studio(page:Page){
+ await page.getByText('Studio').click();
+
+}
+
+export async function EditField(page: Page) {
+  //await page.getByRole('button', { name: /User & Access Control/i }).click();
+  await page.locator('b:has-text("Edit Field")').waitFor();
+  await page.locator('b:has-text("Edit Field")').click();
+
+}

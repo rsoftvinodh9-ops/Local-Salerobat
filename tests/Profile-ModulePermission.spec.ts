@@ -34,4 +34,6 @@ test('Profile-userview Test', async ({ page }) => {
   await Menulist(page, 'Leads');
 
   await verifyModulePermissions(page, 'Leads');
+ 
+
 });
