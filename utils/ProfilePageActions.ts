@@ -44,3 +44,7 @@ export async function clickProfileAction(
       throw new Error(`Unknown action: ${action}`);
   }
 }
+
+export async function closeprofilepopup(page: Page) {
+  await page.locator('button.profileModulePopupClose').click();
+}

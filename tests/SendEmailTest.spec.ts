@@ -6,6 +6,8 @@ import { LeadsPage } from '../pages/LeadsPage';
 import { EmailModalPage } from '../pages/EmailModalPage';
 import { EmailsPage } from '../pages/EmailsPage';
 import { Logger } from '../utils/Logger';
+import { logout } from '../utils/Dashboard';
+
 
 test.describe('Send Email Test', () => {
   test.setTimeout(120000);
@@ -80,5 +82,12 @@ test.describe('Send Email Test', () => {
       await Logger.screenshotOnFailure(page, 'send-email-test');
       throw error;
     }
+
+
+
   });
-});
+
+  
+}); 
+
+

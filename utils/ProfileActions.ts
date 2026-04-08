@@ -11,3 +11,4 @@ export async function openMyProfile(page: Page) {
 export async function openUserTab(page: Page) {
   await page.locator('#block1').getByRole('link', { name: 'User' }).click();
 }
+

@@ -4,7 +4,7 @@ import { login } from '../utils/login';
 import { openMyProfile } from '../utils/ProfileActions';
 import { goToCRMSettings, clickMenu } from '../utils/Dashboard';
 import { clickProfile } from '../utils/SettingsPage';
-import { clickProfileAction } from '../utils/ProfilePageActions';
+import { clickProfileAction, closeprofilepopup ,} from '../utils/ProfilePageActions';
 import { setMultiplePermissions } from '../utils/SetModulePermission';
 import { Menulist } from '../utils/Menulist';
 import { logout } from '../utils/logout';
@@ -25,7 +25,9 @@ test('Profile-userview Test', async ({ page }) => {
     // Delete: true,
     // Create: false,
   });
-  await page.locator('button.profileModulePopupClose').click();
+
+  await closeprofilepopup(page);
+  //await page.locator('button.profileModulePopupClose').click();
 
   await logout(page);
 
