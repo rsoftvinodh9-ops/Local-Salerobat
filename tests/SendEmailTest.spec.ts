@@ -34,24 +34,27 @@ test.describe('Send Email Test', () => {
       await dashboardPage.navigateToModule('Leads');
 
       // Click quick reply on specific lead
-      await leadsPage.clickQuickReplyOnLead('646531');
+      await leadsPage.clickQuickReplyOnLead('647411');
+
+      await page.locator('span.label.whatappsmsemail:visible').click();
 
       // Handle email modal
-      await emailModalPage.selectEmailType();
+
+      await emailModalPage.selectEmailType( 'Primary Email ( Naveen Assigned To )');
       await emailModalPage.openEmailFieldsDropdown();
-      await emailModalPage.selectEmailField('Secondary Email ( rsoft Assigned To )');
+      await emailModalPage.selectEmailField('Secondary Email ( Naveen Assigned To )');
       await emailModalPage.openEmailFieldsDropdown();
-      await emailModalPage.selectEmailField('Secondary Email ( rsoft Created By )');
+      await emailModalPage.selectEmailField('Secondary Email ( Naveen Created By )');
       await emailModalPage.openEmailFieldsDropdown();
-      await emailModalPage.selectEmailField('Secondary Email ( rsoft Created By )');
+      await emailModalPage.selectEmailField('Secondary Email ( Naveen Created By )');
       await emailModalPage.openEmailFieldsDropdown();
-      await emailModalPage.selectEmailField('Secondary Email ( rsoft Created By )');
+      await emailModalPage.selectEmailField('Secondary Email ( Naveen Created By )');
 
       // Select add field
       await emailModalPage.selectAdditionalField('Modified By ID');
 
       // Select template
-      await emailModalPage.selectTemplate('sample template');
+      await emailModalPage.selectTemplate('Sample template');
 
       // // Edit content
       // const emailContent = 'Hi,\n\n                                              Welcome to Rsoft team\n\nOne\tTwo\tThree\tFour\tFive\netfgjh\tvbmvbmnb fgj\thgjhjdj \tgjdgjdj\tdjdhjghkhhjhggkhk\ndghjhgkj\tfhkjkjlk\tfgjhkjljhljg yjhkjgh\tghfkjghkjh\t\n\nhkfhk ttii\n\nukjh\n\n\n\n\t\n\t\n\t\n\t\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                 Thanks,\n\n                   aaaaaa. Test';
