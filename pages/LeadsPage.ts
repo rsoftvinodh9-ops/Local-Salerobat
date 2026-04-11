@@ -11,10 +11,32 @@ export class LeadsPage {
   async clickQuickReplyOnLead(leadId: string) {
     Logger.step(`Clicking quick reply on lead ${leadId}`);
     await Logger.retryAction(async () => {
-      await this.page.locator(`#row-${leadId}`).getByText('quickreply').waitFor({ state: 'visible', timeout: 10000 });
-      await this.page.locator(`#row-${leadId}`).getByText('quickreply').click();
+      const row = this.page.locator(`#row-${leadId}`);
+      await row.waitFor({ state: 'visible', timeout: 15000 });
+      await row.locator('text=quick').click();
       await this.page.locator('#quick-action-modal').waitFor({ state: 'visible', timeout: 10000 });
     });
     Logger.success('Quick reply clicked and modal opened');
+  }
+
+}
+
+export class LeadsPage1 {
+  constructor(private page: Page) {}
+
+  async openQuickReply(rowId: string) {
+    await this.page.locator(`#row-${rowId}`).getByText('quickreply').click();
+    await this.page.locator('#quick-action-modal').waitFor({ state: 'visible', timeout: 20000 });
+  }
+
+  async openLead(rowId: string) {
+  const row = this.page.locator(`#row-${rowId}`);
+  await row.waitFor({ state: 'visible' });
+  await row.click();
+}
+
+  async clickEdit(rowId: string) {
+    await this.page.locator(`#edit-${rowId}`).nth(1).click();
+
   }
 }

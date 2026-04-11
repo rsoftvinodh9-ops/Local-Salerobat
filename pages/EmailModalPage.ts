@@ -26,7 +26,7 @@ export class EmailModalPage {
     await container.waitFor({ state: 'visible', timeout: 15000 });
 
     const trigger = container.getByRole('combobox').last();
-    await trigger.waitFor({ state: 'visible', timeout: 15000 });
+    //await trigger.waitFor({ state: 'visible', timeout: 15000 });
     await trigger.click();
 
     return container;

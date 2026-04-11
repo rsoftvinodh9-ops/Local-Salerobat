@@ -34,7 +34,7 @@ export default defineConfig({
     // Keep default runs fast and deterministic; use headed/debug modes for slower inspection.
     launchOptions: {
     args: ['--start-maximized'],
-    //slowMo: 1000  // Can use this to start the browser maximized
+    slowMo: 1000  // Can use this to start the browser maximized
     },
   },
 

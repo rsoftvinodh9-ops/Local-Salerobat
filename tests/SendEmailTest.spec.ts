@@ -4,9 +4,9 @@ import { login } from '../utils/login';
 import { DashboardPage } from '../pages/DashboardPage';
 import { LeadsPage } from '../pages/LeadsPage';
 import { EmailModalPage } from '../pages/EmailModalPage';
-import { EmailsPage } from '../pages/EmailsPage';
-import { Logger } from '../utils/Logger';
 import { logout } from '../utils/Dashboard';
+import{EmailsPage} from '../pages/EmailsPage';
+import {Logger} from'../utils/Logger';
 
 
 test.describe('Send Email Test', () => {
