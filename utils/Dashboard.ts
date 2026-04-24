@@ -44,6 +44,10 @@ export async function clickSettings(page: Page) {
 // Menu
 export async function clickMenu(page: Page) {
  await page.getByText('list', { exact: true }).click();
+// await page.locator("#vertical_header_name_link").nth(1).click();
+}
+export async function clickMenulink(page: Page) {
+ await page.getByText('list', { exact: true }).click();
 }
 // Open user dropdown
  export async function openUserMenu(page: Page) {
@@ -52,11 +56,17 @@ export async function clickMenu(page: Page) {
   await page.locator('.dropdown-toggle.nav-link.dropdown-user-link').click();
 }
 
-// Go to CRM Settings
 export async function goToCRMSettings(page: Page) {
   await openUserMenu(page);
   await page.getByRole('link', { name: /CRM Setting/i }).click();
 }
+// Other settings
+export async function OtherSettings(page: Page) {
+
+await page.getByText('Other Settings', { exact: true }).click();
+
+}
+
 
 // Navigate directly (dynamic URL)
 export async function navigateToProfileSettings(page: Page) {
@@ -84,6 +94,12 @@ export async function closePopup(page: Page) {
  export async function logout(page: Page) {
    await openUserMenu(page);
    await page.getByRole('link', { name: /Logout/i }).click();
+
+
+
+
+
+   
 
    
 

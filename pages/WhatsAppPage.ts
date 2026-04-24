@@ -4,12 +4,15 @@ export class WhatsAppPage {
   constructor(private page: Page) {}
 
   async selectWhatsapp() {
-    const modal = this.page.locator('#quick-action-modal');
-    await modal.waitFor({ state: 'visible', timeout: 20000 });
-    
-     const whatsAppButton = modal.locator('span.label.whatappsmsemail:visible', { hasText: 'WhatsApp' }).first();
-     await whatsAppButton.waitFor({ state: 'visible', timeout: 20000 });
-     await whatsAppButton.click();
+    //await this.page.locator('.fa fa-whatsapp icon whatappsmsemail').click();
+    // const modal = this.page.locator('#quick-action-modal');
+    // await modal.waitFor({ state: 'visible', timeout: 20000 });
+    await this.page.locator(".icon-container").nth(1).click();
+    //  const whatsAppButton = modal.locator('span.label.whatappsmsemail:visible', { hasText: 'WhatsApp' }).first();
+    //  await whatsAppButton.waitFor({ state: 'visible', timeout: 20000 });
+    //  await whatsAppButton.click();
+  //  await this.page.getByText('.fa.fa-whatsapp.icon WhatsApp', { exact: true }).click();
+    //await this.page.locator('span.icon-container.whatsapptab').getByText('WhatsApp', { exact: true }).click();    
   }
 async selectMobileField() {
     
@@ -41,8 +44,15 @@ async URLField(){
 
     }
     async closeModal() {
-    await this.page.locator('#quick-action-modal').getByText('close', { exact: true }).click();
+    await this.page.locator('#quick-action-modal').getByText('close', { exact: true }).click();  
   }
-} 
+ async closeModaldetail() {
+    
+  await this.page.locator('button:has-text("close")').click();
+}
 
 
+
+
+
+}

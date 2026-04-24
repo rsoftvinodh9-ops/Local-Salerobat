@@ -1,96 +1,152 @@
 import '../utils/Screenshot';
-import { test, expect } from '@playwright/test';
+import { test, Page, BrowserContext } from '@playwright/test';
 import { login } from '../utils/login';
-import { DashboardPage } from '../pages/DashboardPage';
-import { LeadsPage } from '../pages/LeadsPage';
+import { clickMenu } from '../utils/Dashboard';
+import { Menulist } from '../utils/Menulist';
+
+import { LeadsPage, LeadsPage1 } from '../pages/LeadsPage';
 import { EmailModalPage } from '../pages/EmailModalPage';
-import { logout } from '../utils/Dashboard';
-import{EmailsPage} from '../pages/EmailsPage';
-import {Logger} from'../utils/Logger';
+import { EmailsPage } from '../pages/EmailsPage';
+import { GlobalSearch } from '../pages/GlobalSearch';
+import { TableActions } from '../pages/ListViewActions';
+import { toasterMess } from '../utils/CRMtoaster';  
+
+let page: Page;
+let context: BrowserContext;
+
+// ✅ LOGIN ONLY ONCE
+test.beforeAll(async ({ browser }) => {
+  context = await browser.newContext();
+  page = await context.newPage();
+
+  await login(page, 'NAVEEN', 'rsoft', 'RSoft!@345');
+});
+
+// ✅ CLEANUP
+test.afterAll(async () => {
+  await context.close();
+});
 
 
-test.describe('Send Email Test', () => {
-  test.setTimeout(120000);
+// ✅ TEST 1
+test('Send email to lead and verify', async () => {
+  test.setTimeout(300000);
 
-  test('Send email to lead and verify', async ({ page }) => {
-    const dashboardPage = new DashboardPage(page);
-    const leadsPage = new LeadsPage(page);
-    const emailModalPage = new EmailModalPage(page);
-    const emailsPage = new EmailsPage(page);
+  const leads1 = new LeadsPage1(page);
+  const emailModalPage = new EmailModalPage(page);
+  const emailsPage = new EmailsPage(page);
 
-    try {
-      Logger.step('Starting send email test');
+  await clickMenu(page);
+  await Menulist(page, 'Leads');
 
-      // Login using utility
-      await login(page, {
-        companyName: 'NAVEEN',
-        userName: 'rsoft',
-        password: 'RSoft!@345',
-      });
-      Logger.success('Logged in');
+  await leads1.openQuickReply('743087');
+  await emailsPage.QuickEmail();
 
-      // Navigate to Contact Mail Leads
-      await dashboardPage.openVerticalMenu();
-      await dashboardPage.navigateToModule('Leads');
+  await emailModalPage.selectEmailType('Secondary Email ( rsoft Assigned To )');
+  await emailModalPage.openEmailFieldsDropdown();
+  await emailModalPage.selectEmailField('Secondary Email ( rsoft Assigned To )');
+  await emailModalPage.selectTemplate('Sample template');
+  await emailModalPage.sendEmail();
+  await emailsPage.Quickclose();
 
-      // Click quick reply on specific lead
-      await leadsPage.clickQuickReplyOnLead('647411');
+  await leads1.openLead('743087');
 
-      await page.locator('span.label.whatappsmsemail:visible').click();
+  const update = await page.locator('li.appendli div').nth(1).innerText();
+  console.log("Update Captured date & Time: " + update);
 
-      // Handle email modal
-
-      await emailModalPage.selectEmailType( 'Primary Email ( Naveen Assigned To )');
-      await emailModalPage.openEmailFieldsDropdown();
-      await emailModalPage.selectEmailField('Secondary Email ( Naveen Assigned To )');
-      await emailModalPage.openEmailFieldsDropdown();
-      await emailModalPage.selectEmailField('Secondary Email ( Naveen Created By )');
-      await emailModalPage.openEmailFieldsDropdown();
-      await emailModalPage.selectEmailField('Secondary Email ( Naveen Created By )');
-      await emailModalPage.openEmailFieldsDropdown();
-      await emailModalPage.selectEmailField('Secondary Email ( Naveen Created By )');
-
-      // Select add field
-      await emailModalPage.selectAdditionalField('Modified By ID');
-
-      // Select template
-      await emailModalPage.selectTemplate('Sample template');
-
-      // // Edit content
-      // const emailContent = 'Hi,\n\n                                              Welcome to Rsoft team\n\nOne\tTwo\tThree\tFour\tFive\netfgjh\tvbmvbmnb fgj\thgjhjdj \tgjdgjdj\tdjdhjghkhhjhggkhk\ndghjhgkj\tfhkjkjlk\tfgjhkjljhljg yjhkjgh\tghfkjghkjh\t\n\nhkfhk ttii\n\nukjh\n\n\n\n\t\n\t\n\t\n\t\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n                 Thanks,\n\n                   aaaaaa. Test';
-      // await emailModalPage.editEmailContent(emailContent);
-
-      // Send email
-      await emailModalPage.sendEmail();
-      await Logger.screenshot(page, 'after-send-email');
-
-      // Close modal
-      await emailModalPage.closeModal();
-      await Logger.screenshot(page, 'after-close-email-modal');
-
-      // Navigate to Mail Emails
-      await dashboardPage.openVerticalMenu();
-      await dashboardPage.navigateToModule('Mail Emails');
-
-      // View sent emails
-      await emailsPage.clickViewAll();
-      await emailsPage.openEmailBySubject('sample template');
-      await Logger.screenshot(page, 'after-open-email');
-      await emailsPage.clickMailBoxSection();
-      await Logger.screenshot(page, 'after-mailbox-section');
-
-      Logger.success('Send email test completed');
-    } catch (error) {
-      Logger.error(`Test failed: ${error}`);
-      await Logger.screenshotOnFailure(page, 'send-email-test');
-      throw error;
-    }
+  const update1 = await page.locator('li.appendli div').nth(2).innerText();
+  console.log('Email Triggered Update from List View: ' + update1);
+});
 
 
+// ✅ TEST 2
+test('Send email from detail view', async () => {
+  test.setTimeout(300000);
 
-  });
+  const leads1 = new LeadsPage1(page);
+  const emailModalPage = new EmailModalPage(page);
+  const emailsPage = new EmailsPage(page);
 
-  
-}); 
+  await clickMenu(page);
+  await Menulist(page, 'Leads');
+
+  await leads1.openLead('743087');
+  await leads1.openQuickReplyDetail();
+  await emailsPage.QuickEmail();
+
+  await emailModalPage.selectEmailType('Secondary Email ( rsoft Assigned To )');
+  await emailModalPage.openEmailFieldsDropdown();
+  await emailModalPage.selectEmailField('Secondary Email ( rsoft Assigned To )');
+  await emailModalPage.selectTemplate('Sample template');
+  await emailModalPage.sendEmail();
+  await emailsPage.Quickclose();
+
+  await page.reload();
+
+  const update = await page.locator('li.appendli div').nth(1).innerText();
+  console.log("Update Captured date & Time: " + update);
+
+  const update1 = await page.locator('li.appendli div').nth(2).innerText();
+  console.log('Email Triggered Update from Detail View: ' + update1);
+});
 
 
+// ✅ TEST 3
+test('Send email from submodule', async () => {
+  test.setTimeout(300000);
+
+  const leads1 = new LeadsPage1(page);
+  const emailModalPage = new EmailModalPage(page);
+  const emailsPage = new EmailsPage(page);
+
+  await clickMenu(page);
+  await Menulist(page, 'Leads');
+
+  await leads1.openLead('743087');
+  await page.locator('[role="tab"]').nth(1).click();
+  await leads1.openQuickReplySub();
+  await emailsPage.QuickEmail();
+
+  await emailModalPage.selectEmailType('Secondary Email ( rsoft Assigned To )');
+  await emailModalPage.openEmailFieldsDropdown();
+  await emailModalPage.selectEmailField('Secondary Email ( rsoft Assigned To )');
+  await emailModalPage.selectTemplate('Sample template');
+  await emailModalPage.sendEmail();
+  await emailsPage.Quickclose();
+
+  await page.reload();
+
+  const update = await page.locator('li.appendli div').nth(1).innerText();
+  console.log("Update Captured date & Time: " + update);
+
+  const update1 = await page.locator('li.appendli div').nth(2).innerText();
+  console.log('Email Triggered Update from Submodule: ' + update1);
+});
+
+
+// ✅ TEST 4
+test('Send email from global search', async () => {
+  test.setTimeout(300000);
+
+  const leads1 = new LeadsPage1(page);
+  const emailModalPage = new EmailModalPage(page);
+  const search = new GlobalSearch(page);
+
+  await search.Searchicon();
+  await search.selectModule('All Records');
+  await search.globalsearchbar('9030358240');
+  await search.Globalsearchicon();
+  await search.selectmodulefromsearch('Leads');
+
+  await leads1.openQuickReplyglobal('600080');
+
+  await emailModalPage.selectEmailType('Email (Leads)');
+  await emailModalPage.openEmailFieldsDropdown();
+  await emailModalPage.selectEmailField('Email (Leads)');
+  await emailModalPage.selectTemplate('Sample template');
+  await emailModalPage.sendEmail();
+  await emailModalPage.closeModal();
+
+  await leads1.openrecordfromglobalsearch('600080');
+  await page.reload();6
+});

@@ -60,4 +60,32 @@ export class EmailsPage {
     });
     Logger.success('Mail box section clicked');
   }
+
+async QuickEmail(){
+  //  await this.page.locator('#qa-modal-container span',{ hasText: 'Email' }).click();
+  //await this.page.getByText("Email").click();
+  //await this.page.getByText('mail', { exact: true }).click();
+  // await this.page.getByRole('button', { name: 'Email' }).click();
+  await this.page.getByText('mail Email', { exact: true }).click();
+}
+
+
+async FromEmail() {
+  // await this.page.getByRole('combobox').click();
+  await this.page.locator('input[type="search"]').nth(9).click();
+}
+
+
+async Quickclose() {
+    const closeBtn = this.page.locator('#quick-action-modal')
+  .getByText('close', { exact: true });
+
+ if (await closeBtn.isVisible()) {
+ await closeBtn.click();
+}
+  }
+
+}
+export function Selectfrom(page: Page, name: string) {
+  return page.locator(`//li[contains(@class,'select2-results__option') and contains(text(),'${name}')]`);
 }

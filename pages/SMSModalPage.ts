@@ -8,13 +8,11 @@ export class SMSModalPage {
   await this.page.getByText('sms', { exact: true }).click();
   }
 
-  async selectMobileField() {
-     //await this.page.waitForSelector('[id^="select2-rece_number"]', { state: 'visible' });
-    // await this.page.locator('[id^="select2-rece_number"]').first().click();
-    // await this.page.locator('.select2-results__option', { hasText: 'Mobile Phone' }).click();
+  async selectMobileField(mobile: string) {
+     
      await this.page.waitForSelector('[id^="select2-rece_number"]', { state: 'visible' });
      await this.page.locator('[id^="select2-rece_number"]').first().click();
-     await this.page.locator('.select2-results__option', { hasText: 'Alternat Phone   (Leads)' }).click();
+     await this.page.locator('.select2-results__option', { hasText: mobile }).click();
    
   }
 
@@ -30,6 +28,8 @@ export class SMSModalPage {
     async selectMergeField(field: string) {
   // Open dropdown
   await this.page.locator('#select2-qa_selectedfield-container').click();
+
+  
 
   // Select only visible dropdown option
   const option = this.page
@@ -47,6 +47,10 @@ export class SMSModalPage {
   }
 
   async closeModal() {
+     if (this.page.isClosed()) return; // ✅ prevent crash
+       const modal = this.page.locator('#quick-action-modal');
+        if (await modal.isVisible()) {
     await this.page.locator('#quick-action-modal').getByText('close', { exact: true }).click();
   }
+}
 }
